@@ -6,11 +6,13 @@ interface UserInfoProps {
     name?: string | null;
     email?: string | null;
     image?: string | null;
+    emplid?: string | null;
+    surname?: string | null;
   };
 }
 
 const UserInfo = ({ user }: UserInfoProps) => {
-  const { name, email, image } = user;
+  const { emplid: emplid, email, image } = user;
   return (
     <div className="flex flex-col items-center justify-center gap-2 p-5 max-w-md w-full shadow-lg rounded-lg">
       <div className="w-full">
@@ -33,11 +35,11 @@ const UserInfo = ({ user }: UserInfoProps) => {
                 htmlFor="user-name"
                 className="block mb-1 text-sm font-medium text-gray-900"
               >
-                Name
+                Emplid
               </label>
               <input
                 id="user-name"
-                value={name ?? "Name"}
+                value={emplid ?? "Name"}
                 className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 py-2"
                 disabled
               />

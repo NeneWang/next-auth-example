@@ -4,13 +4,13 @@ import { signIn } from "next-auth/react";
 import { Icons } from "@/components/Icons";
 
 const LoginForm = () => {
-  const [name, setName] = useState<undefined | string>("admin");
-  const [password, setPassword] = useState<undefined | string>("admin");
+  const [emplid, setEmplid] = useState<undefined | string>("23xxxxxx");
+  const [surname, setSurname] = useState<undefined | string>("Doe");
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     signIn("credentials", {
-      username: name,
-      password,
+      username: emplid,
+      password: surname,
     });
   }
   return (
@@ -18,7 +18,7 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
       className="flex flex-col gap-2 p-5 max-w-xs w-full bg-white shadow-lg rounded-lg"
     >
-      <button
+      {/* <button
         onClick={() => signIn("github")}
         type="button"
         className="flex justify-center gap-4 bg-slate-800 my-4 text-white p-3 rounded-lg hover:bg-slate-700"
@@ -31,13 +31,13 @@ const LoginForm = () => {
         <small className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white w-8 text-center">
           Or
         </small>
-      </div>
+      </div> */}
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2">
-          <label htmlFor="name">Email or Username</label>
+          <label htmlFor="name">EMPLID</label>
           <input
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            onChange={(e) => setEmplid(e.target.value)}
+            value={emplid}
             type="text"
             className="p-3 border border-slate-700 rounded-lg"
             id="name"
@@ -46,14 +46,14 @@ const LoginForm = () => {
           />
         </div>
         <div className="flex mt-2 flex-col gap-2">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Surname</label>
           <input
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            type="password"
+            onChange={(e) => setSurname(e.target.value)}
+            value={surname}
+            type="text"
             id="password"
             className="p-3 border border-slate-700 rounded-lg"
-            placeholder="Password"
+            placeholder="Doe"
             required
           />
         </div>

@@ -49,6 +49,8 @@ CredentialsProvider({
         const user = {
           id: "1",
           name: "Admin",
+          emplid: '23881380',
+          surname: 'Wang',
           email: "admin@example.com",
           image: "https://avatars.githubusercontent.com/u/80968727?v=4",
           username: "admin",

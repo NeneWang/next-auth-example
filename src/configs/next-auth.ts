@@ -15,6 +15,8 @@ export const authOptions: NextAuthOptions = {
           label: "Username",
           type: "text",
           placeholder: "Enter username",
+          emplid: '23881380',
+          surname: 'Wang',
         },
         password: { label: "Password", type: "password" },
       },
@@ -27,11 +29,13 @@ export const authOptions: NextAuthOptions = {
           image: "https://avatars.githubusercontent.com/u/80968727?v=4",
           username: "admin",
           password: "admin",
+          emplid: '23881380',
+          surname: 'Wang',
         };
 
         if (
-          credentials?.username == user.username &&
-          credentials.password == user.password
+          credentials?.username == user.emplid &&
+          credentials.password == user.surname
         ) {
           return user;
         } else {
