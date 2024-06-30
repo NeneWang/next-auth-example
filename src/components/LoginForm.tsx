@@ -4,13 +4,13 @@ import { signIn } from "next-auth/react";
 import { Icons } from "@/components/Icons";
 
 const LoginForm = () => {
-  const [emplid, setEmplid] = useState<undefined | string>("23xxxxxx");
-  const [surname, setSurname] = useState<undefined | string>("Doe");
+  const [emplid, setEmplid] = useState<undefined | string>("23881380");
+  const [surname, setSurname] = useState<undefined | string>("Wang");
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     signIn("credentials", {
-      username: emplid,
-      password: surname,
+      username: surname,
+      password: emplid,
     });
   }
   return (
@@ -18,20 +18,6 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
       className="flex flex-col gap-2 p-5 max-w-xs w-full bg-white shadow-lg rounded-lg"
     >
-      {/* <button
-        onClick={() => signIn("github")}
-        type="button"
-        className="flex justify-center gap-4 bg-slate-800 my-4 text-white p-3 rounded-lg hover:bg-slate-700"
-      >
-        <Icons.github />
-        <span> Sign in with Github</span>
-      </button>
-      <div className="relative my-3">
-        <hr />
-        <small className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white w-8 text-center">
-          Or
-        </small>
-      </div> */}
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="name">EMPLID</label>

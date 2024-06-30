@@ -6,13 +6,13 @@ interface UserInfoProps {
     name?: string | null;
     email?: string | null;
     image?: string | null;
-    emplid?: string | null;
-    surname?: string | null;
   };
 }
 
 const UserInfo = ({ user }: UserInfoProps) => {
-  const { emplid: emplid, email, image } = user;
+  // console.log('==== user ====')
+  // console.log(user)
+  const {name, email, image } = user;
   return (
     <div className="flex flex-col items-center justify-center gap-2 p-5 max-w-md w-full shadow-lg rounded-lg">
       <div className="w-full">
@@ -20,26 +20,18 @@ const UserInfo = ({ user }: UserInfoProps) => {
         <p className="text-xs text-center">You are signed in to your account</p>
         <hr className="my-4" />
         <div className="flex flex-col items-center gap-2 w-full justify-center">
-          {image && (
-            <Image
-              src={image}
-              width={100}
-              height={100}
-              alt="user avatar"
-              className="rounded-full border-blue-500 border-2"
-            />
-          )}
+          
           <div className="w-full">
             <div className="mb-2">
               <label
                 htmlFor="user-name"
                 className="block mb-1 text-sm font-medium text-gray-900"
               >
-                Emplid
+                Surname
               </label>
               <input
                 id="user-name"
-                value={emplid ?? "Name"}
+                value={name ?? "Name"}
                 className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 py-2"
                 disabled
               />
@@ -49,7 +41,7 @@ const UserInfo = ({ user }: UserInfoProps) => {
                 htmlFor="user-name"
                 className="block mb-1 text-sm font-medium text-gray-900"
               >
-                Email address
+                EMPLID
               </label>
               <input
                 id="user-name"
@@ -58,6 +50,10 @@ const UserInfo = ({ user }: UserInfoProps) => {
                 disabled
               />
             </div>
+{/* 
+            <div>
+              <label htmlFor=""></label>
+            </div> */}
           </div>
         </div>
         <hr className="my-4" />

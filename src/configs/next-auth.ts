@@ -15,27 +15,27 @@ export const authOptions: NextAuthOptions = {
           label: "Username",
           type: "text",
           placeholder: "Enter username",
-          emplid: '23881380',
-          surname: 'Wang',
         },
+        emplid: { label: "EMPLID", type: "text", placeholder: "Enter EMPLID"},
+        surname: { label: "Surname", type: "text", placeholder: "Enter Surname"},
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         // Validate credentials with your database here
         const user = {
           id: "1",
-          name: "Admin",
-          email: "admin@example.com",
-          image: "https://avatars.githubusercontent.com/u/80968727?v=4",
-          username: "admin",
-          password: "admin",
-          emplid: '23881380',
-          surname: 'Wang',
+          name: "wang",
+          email: "23881380",
+          // image: "https://avatars.githubusercontent.com/u/80968727?v=4",
+          classcode: "CSE 120",
+          
         };
 
+        console.log("==== Credentials ====")
+        console.log(credentials)
         if (
-          credentials?.username == user.emplid &&
-          credentials.password == user.surname
+          credentials?.username.toLowerCase() == user.name &&
+          credentials.password.toLowerCase() == user.email
         ) {
           return user;
         } else {
