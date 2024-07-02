@@ -14,7 +14,7 @@ import Link from "next/link"; // Import if you're using Next.js
 interface QuestionData {
   question: string;
   description: string;
-  options: string[];
+  options?: string[];
   next_link: string;
 }
 
@@ -50,7 +50,7 @@ function QuestionComponent({ questionData }: QuestionComponentProps) {
                   aria-labelledby="demo-radio-buttons-group-label"
                 >
                   <Grid container spacing={2}>
-                    {questionData.options.map((option, index) => (
+                    {questionData.options && questionData.options.map((option, index) => (
                       <Grid
                         item
                         xs={12}
