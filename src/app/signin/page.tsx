@@ -1,3 +1,4 @@
+"client use"
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/configs/next-auth";
 import LoginForm from "@/components/LoginForm";

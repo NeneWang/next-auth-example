@@ -13,7 +13,7 @@ export default async function Home() {
         <UserInfo user={user} />
       ) : (
         <div className="flex flex-col items-center justify-center gap-2 p-5 w-fit shadow-lg rounded-lg">
-          <h1 className="text-2xl font-bold">Next-Auth Example</h1>
+          <h1 className="text-2xl font-bold">Crowd Learning Human Capita Innovative</h1>
           <p className="flex gap-2">
             You must be signed in to view this page
             <Link href="/signin">

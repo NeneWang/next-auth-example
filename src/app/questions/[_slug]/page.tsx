@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import QuestionComponent from "@/components/QuestionComponent";
 import InputQuestionComponent from "@/components/InputQuestionComponent";
 
+
+
 // Example data structure indexed by slug
 const questionDataMap = {
   "question-1": {

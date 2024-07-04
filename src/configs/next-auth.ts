@@ -1,6 +1,7 @@
-import { type NextAuthOptions } from "next-auth";
+import { User, type NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { getUsers, getUserData } from "@/utils/api";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -16,31 +17,36 @@ export const authOptions: NextAuthOptions = {
           type: "text",
           placeholder: "Enter username",
         },
-        emplid: { label: "EMPLID", type: "text", placeholder: "Enter EMPLID"},
-        surname: { label: "Surname", type: "text", placeholder: "Enter Surname"},
+        emplid: { label: "EMPLID", type: "text", placeholder: "Enter EMPLID" },
+        surname: { label: "Surname", type: "text", placeholder: "Enter Surname" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(credentials): Promise<User | null> {
         // Validate credentials with your database here
-        const user = {
-          id: "1",
-          name: "wang",
-          email: "23881380",
-          // image: "https://avatars.githubusercontent.com/u/80968727?v=4",
-          classcode: "CSE 120",
-          
-        };
 
-        console.log("==== Credentials ====")
-        console.log(credentials)
-        if (
-          credentials?.username.toLowerCase() == user.name &&
-          credentials.password.toLowerCase() == user.email
-        ) {
-          return user;
-        } else {
+        // console.log("==== Credentials ====")
+        // console.log(credentials)
+
+        // Find in users json:
+        // const user = users.find((u: { name: string | undefined; }) => u.name === credentials?.username.toLocaleLowerCase());
+        if (!credentials?.username || !credentials?.password) {
           return null;
         }
+
+        const userData = await getUserData(credentials.password);
+        if (!userData) {
+          return null;
+        }
+        if (userData.surname !== credentials.username) {
+          return null;
+        }
+        // return userData
+        return {
+          id: userData.id, // Add the required 'id' property
+          name: userData.surname,
+          email: userData.emplid,
+          image: userData.image,
+        };
       },
     }),
   ],
